@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The best revision website ever!">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Game Site Demo v0.1</title>
+
+        <!-- Bootstrap 5.3.3 -->
+        <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
+        
+        <style id="main-style" rel="stylesheet">
+            body {
+                background-color: #FFDFA2;
+                font-family: FuturaPT;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            @font-face {
+                font-family: FuturaPT;
+                src: url(assets/FuturaPT.otf);
+            }
+            #BG{
+                z-index: -5;
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                min-width: 100%;
+                min-height: 100%;
+            }
+            .mainbox {
+                z-index: 1;
+                width: 90%;
+                height: 95vh;
+                backdrop-filter: blur(16px) saturate(180%);
+                -webkit-backdrop-filter: blur(16px) saturate(180%);
+                background-color: rgba(233, 233, 233, 0.55);
+                outline: 1px solid white;
+                margin-top: 1%;
+                margin-bottom: 1%;
+                border-radius: 1em;
+                box-shadow: 0px 10px 10px;
+            }
+            .round_button{
+                width: auto;
+                height: auto;
+                box-shadow: 0em 0.15em;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 1em;
+                transition-duration: 0.4s;
+                -webkit-transition-duration: 0.4s;
+                -ms-transition-duration: 0.4s;
+                -moz-transition-duration: 0.4s;
+            }
+            .round_button:hover {
+                transform: translate(0em, -0.15em);
+                box-shadow: 0em 0.30em;
+                transition-duration: 0.5s;
+                -webkit-transition-duration: 0.3s;
+                -ms-transition-duration: 0.3s;
+                -moz-transition-duration: 0.3s;
+                background-color: rgba(255, 255, 255, 0.8);
+            }
+
+            .round_button:active {
+                transform: translate(0em, 0.05em);
+                box-shadow: 0em 0.10em;
+                transition-duration: 0.1s;
+                -webkit-transition-duration: 0.1s;
+                -ms-transition-duration: 0.1s;
+                -moz-transition-duration: 0.1s;
+                background-color: rgba(197, 197, 197, 0.8);
+            }
+            
+            .loader-text {
+                font-size: 2em;
+                color: #d0ced2;
+                text-decoration: none !important;
+            }
+
+            .grid-img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .griditem {
+                text-decoration: none !important;
+            }
+            
+            .img-hover-shadow {
+                transition: box-shadow 0.35s; /* Add smooth transition for the shadow effect */
+            }
+
+            .img-hover-shadow:hover {
+                box-shadow: 0 0 20px #000000; /* Add shadow effect on hover */
+            }
+            .listing-text {
+                font-size: 1.5em;
+                color: #CCCCCC;
+                text-decoration: none !important;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script src="./assets/bootstrap/js/bootstrap.js"></script>
+        <center>
+            <div class="mainbox">
+                
+                <h1>test</h1>
+                <button class="round_button">
+                   hello world!
+                </button>
+                
+                <!-- Loader box -->
+                <div class="text-center" id="loader">
+                    <img src="assets/loader.gif" alt="Loader">
+                    <p class="loader-text">Loading...</p>
+                </div>
+                
+                <!-- glist grid -->
+                <div class="container">
+                    <div class="row row-cols-5" id="itembox">
+                    </div>
+                </div>
+            </div>
+        
+        <!-- BG video -->
+        <video autoplay muted loop id="BG">
+            <source src="BG.mp4" type="video/mp4">
+        </video>
+        
+        <script>
+            const text = `
+            [
+                    {
+                        "name": "0hh1",
+                        "img": "assets/icons/1.png",
+                        "url": "studyguide/0hh1/index.html"
+                    },
+                    {
+                        "name": "1v1 LoL",
+                        "img": "assets/icons/2.png",
+                        "url": "studyguide/1vl/index.html"
+                    },
+                    {
+                        "name": "2048",
+                        "img": "assets/icons/3.png",
+                        "url": "studyguide/2048/index.html"
+                    },
+                    {
+                        "name": "2048 Cupcakes",
+                        "img": "assets/icons/4.png",
+                        "url": "studyguide/2048c/index.html"
+                    },
+                    {
+                        "name": "A Dance of Fire and Ice",
+                        "img": "assets/icons/55.jpg",
+                        "url": "studyguide/adofai/index.html"
+                    },
+                    {
+                        "name": "Backfire",
+                        "img": "assets/icons/5.png",
+                        "url": "studyguide/backfire/index.html"
+                    },
+                    {
+                        "name": "Basketball Bros",
+                        "img": "assets/icons/62.jpg",
+                        "url": "studyguide/b-b/index.html"
+                    },
+                    {
+                        "name": "Basketball Stars",
+                        "img": "assets/icons/43.png",
+                        "url": "studyguide/b-stars/index.html"
+                    },
+                    {
+                        "name": "Bloons TD",
+                        "img": "assets/icons/39.png",
+                        "url": "studyguide/btd1/index.html"
+                    },
+                    {
+                        "name": "Bloons TD 2",
+                        "img": "assets/icons/40.png",
+                        "url": "studyguide/btd2/index.html"
+                    },
+                    {
+                        "name": "Bloons TD 3",
+                        "img": "assets/icons/41.png",
+                        "url": "studyguide/btd3/index.html"
+                    },
+                    {
+                        "name": "Calculator",
+                        "img": "assets/icons/68.jpg",
+                        "url": "studyguide/calc/index.html"
+                    },
+                    {
+                        "name": "Chrome Dino",
+                        "img": "assets/icons/6.png",
+                        "url": "studyguide/cdino/index.html"
+                    },
+                    {
+                        "name": "Cookie Clicker",
+                        "img": "assets/icons/42.png",
+                        "url": "studyguide/cc/index.html"
+                    },
+                    {
+                        "name": "Crossy Road",
+                        "img": "assets/icons/7.png",
+                        "url": "studyguide/cr/index.html"
+                    },
+                    {
+                        "name": "Cut the Rope",
+                        "img": "assets/icons/8.png",
+                        "url": "studyguide/ctr/index.html"
+                    },
+                    {
+                        "name": "Cut the Rope: Time Travel",
+                        "img": "assets/icons/9.png",
+                        "url": "studyguide/ctrtimetravel/index.html"
+                    },
+                    {
+                        "name": "Dadish",
+                        "img": "assets/icons/76.png",
+                        "url": "studyguide/d-d/index.html"
+                    },
+                    {
+                        "name": "Dante",
+                        "img": "assets/icons/10.png",
+                        "url": "studyguide/dante/index.html"
+                    },
+                    {
+                        "name": "Dogeminer",
+                        "img": "assets/icons/64.png",
+                        "url": "studyguide/d-mi/index.html"
+                    },
+                    {
+                        "name": "Doodle Cricket",
+                        "img": "assets/icons/11.png",
+                        "url": "studyguide/dcricket/index.html"
+                    },
+                    {
+                        "name": "Dreadhead Parkour",
+                        "img": "assets/icons/63.png",
+                        "url": "studyguide/dh-p/index.html"
+                    },
+                    {
+                        "name": "Drive Mad",
+                        "img": "assets/icons/60.png",
+                        "url": "studyguide/d-m/index.html"
+                    },
+                    {
+                        "name": "Duck Life",
+                        "img": "assets/icons/44.png",
+                        "url": "studyguide/dl-1/index.html"
+                    },
+                    {
+                        "name": "Duck Life 2",
+                        "img": "assets/icons/45.png",
+                        "url": "studyguide/dl-2/index.html"
+                    },
+                    {
+                        "name": "Duck Life 3",
+                        "img": "assets/icons/46.png",
+                        "url": "studyguide/dl-3/index.html"
+                    },
+                    {
+                        "name": "Duck Life 4",
+                        "img": "assets/icons/47.png",
+                        "url": "studyguide/dl-4/index.html"
+                    },
+                    {
+                        "name": "Elastic Face",
+                        "img": "assets/icons/65.png",
+                        "url": "studyguide/e-f/index.html"
+                    },
+                    {
+                        "name": "FNAF Classic",
+                        "img": "assets/icons/66.jpg",
+                        "url": "studyguide/fn-af/index.html"
+                    },
+                    {
+                        "name": "Frogger",
+                        "img": "assets/icons/12.png",
+                        "url": "studyguide/frog/index.html"
+                    },
+                    {
+                        "name": "Geometry Dash",
+                        "img": "assets/icons/67.png",
+                        "url": "studyguide/gd/index.html"
+                    },
+                    {
+                        "name": "Geometry Dash Remastered",
+                        "img": "assets/icons/56.png",
+                        "url": "studyguide/gdr/index.html"
+                    },
+                    {
+                        "name": "Getaway Shootout",
+                        "img": "assets/icons/13.png",
+                        "url": "studyguide/ga-s/index.html"
+                    },
+                    {
+                        "name": "Hacker Typer",
+                        "img": "assets/icons/49.jpg",
+                        "url": "studyguide/ht/index.html"
+                    },
+                    {
+                        "name": "Hill Climb Racing 2",
+                        "img": "assets/icons/14.png",
+                        "url": "studyguide/hcr2/index.html"
+                    },
+                    {
+                        "name": "Hextris",
+                        "img": "assets/icons/15.png",
+                        "url": "studyguide/hextris/index.html"
+                    },
+                    {
+                        "name": "HexGL",
+                        "img": "assets/icons/16.png",
+                        "url": "studyguide/hgl/index.html"
+                    },
+                    {
+                        "name": "Iron Dash",
+                        "img": "assets/icons/17.png",
+                        "url": "studyguide/i-dash/index.html"
+                    },
+                    {
+                        "name": "Jetpack Joyride",
+                        "img": "assets/icons/18.png",
+                        "url": "studyguide/j-j/index.html"
+                    },
+                    {
+                        "name": "Jelly Jump",
+                        "img": "assets/icons/19.png",
+                        "url": "studyguide/jelly-j/index.html"
+                    },
+                    {
+                        "name": "Line Rider",
+                        "img": "assets/icons/58.png",
+                        "url": "studyguide/l-r/index.html"
+                    },
+                    {
+                        "name": "Little Alchemy 2",
+                        "img": "assets/icons/77.jpg",
+                        "url": "studyguide/la2/index.html"
+                    },
+                    {
+                        "name": "Madalin Stunt Cars 2",
+                        "img": "assets/icons/25.png",
+                        "url": "studyguide/msc2/index.html"
+                    },
+                    {
+                        "name": "Moto X3M",
+                        "img": "assets/icons/20.png",
+                        "url": "studyguide/mx3m/index.html"
+                    },
+                    {
+                        "name": "Moto X3M Winter",
+                        "img": "assets/icons/52.png",
+                        "url": "studyguide/mx3m-w/index.html"
+                    },
+                    {
+                        "name": "MS Edge Surf",
+                        "img": "assets/icons/21.png",
+                        "url": "studyguide/ms-edgesurf/index.html"
+                    },
+                    {
+                        "name": "MS Minesweeper",
+                        "img": "assets/icons/22.png",
+                        "url": "studyguide/ms-minesweeper/index.html"
+                    },
+                    {
+                        "name": "MS Solitaire",
+                        "img": "assets/icons/23.png",
+                        "url": "studyguide/ms-solitaire/index.html"
+                    },
+                    {
+                        "name": "MS Sudoku",
+                        "img": "assets/icons/24.png",
+                        "url": "studyguide/ms-sudoku/index.html"
+                    },
+                    {
+                        "name": "Papa's Pizzeria",
+                        "img": "assets/icons/69.jpg",
+                        "url": "studyguide/p-p/index.html"
+                    },
+                    {
+                        "name": "Paper.io 2",
+                        "img": "assets/icons/48.png",
+                        "url": "studyguide/pio2/index.html"
+                    },
+                    {
+                        "name": "Quake",
+                        "img": "assets/icons/59.jpg",
+                        "url": "studyguide/quake/index.html"
+                    },
+                    {
+                        "name": "Raft Wars",
+                        "img": "assets/icons/70.png",
+                        "url": "studyguide/r-w/index.html"
+                    },
+                    {
+                        "name": "Retro Bowl",
+                        "img": "assets/icons/36.jpg",
+                        "url": "studyguide/r-b/index.html"
+                    },
+                    {
+                        "name": "Rooftop Snipers",
+                        "img": "assets/icons/53.png",
+                        "url": "studyguide/r-s/index.html"
+                    },
+                    {
+                        "name": "Run 3",
+                        "img": "assets/icons/26.png",
+                        "url": "studyguide/r3/index.html"
+                    },
+                    {
+                        "name": "Sky City Riders",
+                        "img": "assets/icons/61.png",
+                        "url": "studyguide/scr/index.html"
+                    },
+                    {
+                        "name": "Slope",
+                        "img": "assets/icons/29.png",
+                        "url": "studyguide/sl/index.html"
+                    },
+                    {
+                        "name": "Snake",
+                        "img": "assets/icons/51.jpg",
+                        "url": "studyguide/snake/index.html"
+                    },
+                    {
+                        "name": "Space Invaders",
+                        "img": "assets/icons/28.png",
+                        "url": "studyguide/si/index.html"
+                    },
+                    {
+                        "name": "Stack",
+                        "img": "assets/icons/33.png",
+                        "url": "studyguide/stack/index.html"
+                    },
+                    {
+                        "name": "Stickman Hook",
+                        "img": "assets/icons/35.jpg",
+                        "url": "studyguide/smhook/index.html"
+                    },
+                    {
+                        "name": "Subway Surfers",
+                        "img": "assets/icons/34.jpg",
+                        "url": "studyguide/s-surf/index.html"
+                    },
+                    {
+                        "name": "Subway Surfers - World Tour: Tokyo",
+                        "img": "assets/icons/38.png",
+                        "url": "studyguide/ss-tokyo/index.html"
+                    },
+                    {
+                        "name": "Supercold",
+                        "img": "assets/icons/27.png",
+                        "url": "studyguide/sc/index.html"
+                    },
+                    {
+                        "name": "Super Mario 63",
+                        "img": "assets/icons/57.png",
+                        "url": "studyguide/s63/index.html"
+                    },
+                    {
+                        "name": "Super Mario 64",
+                        "img": "assets/icons/37.jpg",
+                        "url": "studyguide/s64/index.html"
+                    },
+                    {
+                        "name": "Tanuki Sunset",
+                        "img": "assets/icons/31.png",
+                        "url": "studyguide/ts/index.html"
+                    },
+                    {
+                        "name": "Temple Run 2",
+                        "img": "assets/icons/30.png",
+                        "url": "studyguide/tempr2/index.html"
+                    },
+                    {
+                        "name": "Tube Jumpers",
+                        "img": "assets/icons/54.png",
+                        "url": "studyguide/t-j/index.html"
+                    },
+                    {
+                        "name": "Tunnel Rush",
+                        "img": "assets/icons/32.png",
+                        "url": "studyguide/tunru/index.html"
+                    },
+                    {
+                        "name": "World's Hardest Game",
+                        "img": "assets/icons/78.png",
+                        "url": "studyguide/whg/index.html"
+                    },
+                    {
+                        "name": "Vex 3",
+                        "img": "assets/icons/71.jpg",
+                        "url": "studyguide/v3/index.html"
+                    },
+                    {
+                        "name": "Vex 4",
+                        "img": "assets/icons/72.png",
+                        "url": "studyguide/v4/index.html"
+                    },
+                    {
+                        "name": "Vex 5",
+                        "img": "assets/icons/73.jpg",
+                        "url": "studyguide/v5/index.html"
+                    },
+                    {
+                        "name": "Vex 6",
+                        "img": "assets/icons/74.jpg",
+                        "url": "studyguide/v6/index.html"
+                    },
+                    {
+                        "name": "WebRetro",
+                        "img": "assets/icons/75.jpg",
+                        "url": "studyguide/wr/index.html"
+                    },
+                    {
+                        "name": "Snow Rider 3D",
+                        "img": "assets/icons/79.png",
+                        "url": "studyguide/sr3d/index.html"
+                    },
+                    {
+                        "name": "Neverball",
+                        "img": "assets/icons/80.png",
+                        "url": "studyguide/nb/index.html"
+                    },
+                    {
+                        "name": "PolyTrack",
+                        "img": "assets/icons/81.png",
+                        "url": "studyguide/pt/index.html"
+                    },
+                    {
+                        "name": "Tennis Physics",
+                        "img": "assets/icons/82.jpg",
+                        "url": "studyguide/tp/index.html"
+                    },
+                    {
+                        "name": "Tap Tap Shots",
+                        "img": "assets/icons/83.jpg",
+                        "url": "studyguide/tts/index.html"
+                    },
+                    {
+                        "name": "Car Stunt King",
+                        "img": "assets/icons/84.jpg",
+                        "url": "studyguide/csk/index.html"
+                    },
+                    {
+                        "name": "Spacebar Clicker",
+                        "img": "assets/icons/85.png",
+                        "url": "studyguide/sp-c/index.html"
+                    },
+                    {
+                        "name": "Eggy Car",
+                        "img": "assets/icons/86.png",
+                        "url": "studyguide/e-c/index.html"
+                    },
+                    {
+                        "name": "Getting Over It",
+                        "img": "assets/icons/87.jpg",
+                        "url": "studyguide/goi/index.html"
+                    },
+                    {
+                        "name": "Drift Boss",
+                        "img": "assets/icons/88.jpg",
+                        "url": "studyguide/d-b/index.html"
+                    },
+                    {
+                        "name": "RoBeats",
+                        "img": "assets/icons/89.jpg",
+                        "url": "studyguide/rbe/index.html"
+                    },
+                    {
+                        "name": "PolyRhythm",
+                        "img": "assets/icons/90.png",
+                        "url": "studyguide/pr/index.html"
+                    },
+                    {
+                        "name": "Fancy Pants Adventures 2",
+                        "img": "assets/icons/91.png",
+                        "url": "studyguide/fpa-2/index.html"
+                    },
+                    {
+                        "name": "QWOP",
+                        "img": "assets/icons/92.jpg",
+                        "url": "studyguide/qp/index.html"
+                    },
+                    {
+                        "name": "Bad Piggies",
+                        "img": "assets/icons/93.jpg",
+                        "url": "studyguide/b-p/index.html"
+                    },
+                    {
+                        "name": "JustFall.LoL",
+                        "img": "assets/icons/94.jpg",
+                        "url": "studyguide/jf/index.html"
+                    },
+                    {
+                        "name": "Super Liquid Soccer",
+                        "img": "assets/icons/95.png",
+                        "url": "studyguide/sls/index.html"
+                    },
+                    {
+                        "name": "Dadish 2",
+                        "img": "assets/icons/96.jpg",
+                        "url": "studyguide/d2/index.html"
+                    },
+                    {
+                        "name": "Friday Night Funkin'",
+                        "img": "assets/icons/97.png",
+                        "url": "studyguide/ff/index.html"
+                    },
+                    {
+                        "name": "SandBoxels",
+                        "img": "assets/icons/98.jpg",
+                        "url": "studyguide/sb/index.html"
+                    },
+                    {
+                        "name": "Spelunky",
+                        "img": "assets/icons/99.jpg",
+                        "url": "studyguide/sp/index.html"
+                    },
+                    {
+                        "name": "Samurai Rabbit 1",
+                        "img": "assets/icons/100.jpg",
+                        "url": "studyguide/sr-1/index.html"
+                    },
+                    {
+                        "name": "Samurai Rabbit 2",
+                        "img": "assets/icons/101.jpg",
+                        "url": "studyguide/sr-2/index.html"
+                    },
+                    {
+                        "name": "Rooftop Snipers 2",
+                        "img": "assets/icons/102.jpg",
+                        "url": "studyguide/rts-2/index.html"
+                    },
+                    {
+                        "name": "Borrito Bison: Lancha Libre",
+                        "img": "assets/icons/103.jpg",
+                        "url": "studyguide/bb-ll/index.html"
+                    },
+                    {
+                        "name": "Borrito Bison: Revenge",
+                        "img": "assets/icons/104.png",
+                        "url": "studyguide/bb-r/index.html"
+                    },
+                    {
+                        "name": "GrindCraft",
+                        "img": "assets/icons/106.jpg",
+                        "url": "studyguide/gc/index.html"
+                    },
+                    {
+                        "name": "Monkey Mart",
+                        "img": "assets/icons/107.jpg",
+                        "url": "studyguide/mm/index.html"
+                    },
+                    {
+                        "name": "Blumgi Slime",
+                        "img": "assets/icons/108.png",
+                        "url": "studyguide/b-s/index.html"
+                    },
+                    {
+                        "name": "Moto X3M 2",
+                        "img": "assets/icons/111.jpg",
+                        "url": "studyguide/mx3m-2/index.html"
+                    },
+                    {
+                        "name": "Moto X3M Spooky land",
+                        "img": "assets/icons/113.png",
+                        "url": "studyguide/mx3m-s/index.html"
+                    },
+                    {
+                        "name": "Moto X3M Pool party ",
+                        "img": "assets/icons/112.jpg",
+                        "url": "studyguide/mx3m-p/index.html"
+                    },
+                    {
+                        "name": "Wordle Unlimited",
+                        "img": "assets/icons/109.png",
+                        "url": "studyguide/w-u/index.html"
+                    },
+                    {
+                        "name": "Parking Fury",
+                        "img": "assets/icons/114.jpg",
+                        "url": "studyguide/pf1/index.html"
+                    },
+                    {
+                        "name": "Parking Fury 2",
+                        "img": "assets/icons/115.jpg",
+                        "url": "studyguide/pf2/index.html"
+                    },
+                    {
+                        "name": "Parking Fury 3",
+                        "img": "assets/icons/116.jpg",
+                        "url": "studyguide/pf3/index.html"
+                    },
+                    {
+                        "name": "Gun Mayhem REDUX",
+                        "img": "assets/icons/117.png",
+                        "url": "studyguide/gmr/index.html"
+                    },
+                    {
+                        "name": "Tag",
+                        "img": "assets/icons/118.png",
+                        "url": "studyguide/t/index.html"
+                    },
+                    {
+                        "name": "Fruit Ninja",
+                        "img": "assets/icons/120.png",
+                        "url": "studyguide/fn/index.html"
+                    },
+                    {
+                        "name": "Iron Snout",
+                        "img": "assets/icons/119.jpg",
+                        "url": "studyguide/is/index.html"
+                    },
+                    {
+                        "name": "Blumgi Rocket",
+                        "img": "assets/icons/122.jpg",
+                        "url": "studyguide/b-r/index.html"
+                    },
+                    {
+                        "name": "Dadish 3",
+                        "img": "assets/icons/123.jpg",
+                        "url": "studyguide/d3/index.html"
+                    },
+                    {
+                        "name": "Osu!",
+                        "img": "assets/icons/124.jpeg",
+                        "url": "studyguide/w-o/index.html"
+                    },
+                    {
+                        "name": "10 Minutes Before Dawn",
+                        "img": "assets/icons/125.png",
+                        "url": "studyguide/10mbd/index.html"
+                    },
+                    {
+                        "name": "Drift Hunters",
+                        "img": "assets/icons/126.png",
+                        "url": "studyguide/db-c/index.html"
+                    }
+                ]
+            `;
+            const blob = new Blob([text], {type: "application/json"});
+            const blobUrl = URL.createObjectURL(blob);
+            
+            function renderList() {
+                document.getElementById("loader").style.display = "block";
+                const container = document.getElementById("itembox");
+                
+                fetch(blobUrl)
+                  .then(response => response.json())
+                  .then(data => {
+                      data.sort((a, b) => (a.name > b.name) ? 1 : -1);
+                      container.innerHTML = '';
+                      data.forEach(item => {
+                          const listItem = document.createElement("a")
+                          listItem.classList.add("griditem")
+                          listItem.href = item.url
+                          listItem.innerHTML = `
+                          <div class="col zoom-effect">
+                              <img src="${item.img}" class="img-fluid grid-img rounded-4 img-hover-shadow" alt="Image">
+                              <p class="text-center listing-text">${item.name}</p>
+                          </div>
+                          `;
+                          container.appendChild(listItem);
+                      });
+                  })
+                  .catch((error) => console.error("Error:", error))
+                  .finally(() => {
+                      document.getElementById("loader").style.display = "none";
+                  });
+            };
+                
+            renderList();
+            
+            // Access the first stylesheet in the document
+            const stylesheet = document.styleSheets[1];
+
+            // Modify a CSS rule for the class
+            const rules = stylesheet.cssRules || stylesheet.rules;
+            for (let i = 0; i < rules.length; i++) {
+              if (rules[i].selectorText === '.mainbox') {
+                rules[i].style.height = '95%';
+              }
+            }
+        </script>
+        </center>
+    </body>
+</html>
