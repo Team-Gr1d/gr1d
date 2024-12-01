@@ -75,6 +75,10 @@
                 -moz-transition-duration: 0.1s;
                 background-color: rgba(197, 197, 197, 0.8);
             }
+            .card_margin{
+                margin-top: 5%;
+                margin-bottom: 5%;
+            }
             .gamecard {
                 z-index: 1;
                 width: 90%;
@@ -197,7 +201,7 @@
                 
                 <!-- glist grid -->
                 <div class="container">
-                    <div class="row row-cols-5" id="itembox">
+                    <div class="row row-cols-4" id="itembox">
                     </div>
                 </div>
             </div>
@@ -278,11 +282,13 @@
                           listItem.classList.add("griditem")
                           listItem.href = item.url
                           listItem.innerHTML = `
-                          <div class="col zoom-effect gamecard">
-                            <div class="inner_card">
-                              <img src="${item.img}" class="img-fluid rounded-2" alt="Image">
-                              <p class="text-center listing-text ">${item.name}</p>
-                              <p class="gamecardtext text-center text-break">${item.desc}</p>
+                          <div class="card_margin">
+                            <div class="col zoom-effect gamecard">
+                                <div class="inner_card">
+                                <img src="${item.img}" class="img-fluid rounded-2" alt="Image">
+                                <p class="text-center listing-text ">${item.name}</p>
+                                <p class="gamecardtext text-center text-break">${item.desc}</p>
+                                </div>
                             </div>
                           </div>
                           `;
