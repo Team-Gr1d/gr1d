@@ -294,9 +294,9 @@
             vertical-align: middle;
         }
         .searchbar {
-            width: 200px;
+            width: 300px;
             float: right;
-            margin-right: 20px;
+            margin-right: 45px;
             margin-bottom: 20px;
             background-color: rgba(255, 255, 255, 0.2);
             color: white;
@@ -404,6 +404,24 @@
                 </div>
             </div>
         </center>
+        <script>
+            function handleSearch() {
+            const searchTerm = document.getElementById("searchbar").value.toLowerCase();
+            const gridItems = document.querySelectorAll(".griditem");
+          
+              gridItems.forEach(item => {
+                 const itemName = item.querySelector(".listing-text").textContent.toLowerCase();
+                 if (itemName.includes(searchTerm)) {
+                     item.style.display = "block";
+                  } else {
+                     item.style.display = "none";
+                 }
+              });
+            }
+        
+           document.getElementById("searchbar").addEventListener("input", handleSearch);
+         </script>
+        
         <!-- this is the  -->
         <script>
             const settingsButton = document.getElementById('settings-button');
