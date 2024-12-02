@@ -286,6 +286,29 @@
                 cursor: pointer;
             }
 
+
+        .sidebaricon {
+            width: 30px;
+            height: 30px;
+            padding-bottom: 5px;
+            vertical-align: middle;
+        }
+        .searchbar {
+            width: 200px;
+            float: right;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 10px;
+            border-color: white;
+            border-style: solid;
+            border-width: 2px;
+        }
+        .searchbar::placeholder {
+            color: white;
+        }
+
             .sidebar ul li a::after {
                 content: '';
                 position: absolute;
@@ -297,6 +320,7 @@
                 background-color: #ffffff;
                 transition: width 0.3s ease-in-out;
             }
+
 
             .sidebar ul li a:hover::after {
                 width: 100%;
@@ -357,13 +381,16 @@
             <button class="round_button" id="close_settings">
                X
             </button>
+
+
+
         </div>
         
         <center>
             <div class="mainbox" id="main-panel">
                 
                 <h1>gr1d</h1>
-                
+                <input type="text" placeholder="Search..." id="searchbar" class="searchbar">
                 <!-- Loader box -->
                 <div class="text-center" id="loader">
                     <img src="assets/loader.gif" alt="Loader">
