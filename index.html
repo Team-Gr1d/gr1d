@@ -254,6 +254,62 @@
             h1{
                 font-size: 3vw;
             }
+            .sidebar {
+            width: 200px;
+            height: 100vh;
+            z-index: 1000;
+            padding-top: 20px;
+            padding-left: 20px;
+            top: 0;
+            left: 0;
+            position: fixed;
+            color: #ffffff;
+            }
+
+            .sidebar ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .sidebar ul li {
+                margin: 20px 0;
+            }
+
+            .sidebar ul li a {
+                text-decoration: none;
+                color: #ffffff;
+                font-size: 30px;
+                position: relative;
+                cursor: pointer;
+            }
+
+            .sidebar ul li a::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 2px;
+                width: 0;
+                color: #ffffff;
+                background-color: #ffffff;
+                transition: width 0.3s ease-in-out;
+            }
+
+            .sidebar ul li a:hover::after {
+                width: 100%;
+            }
+
+            .sidebaricon {
+                width: 30px;
+                height: 30px;
+                padding-bottom: 5px;
+                vertical-align: middle;
+            }
+          
+            @font-face {
+                font-family: "Doto";
+                src: url("./assets/fonts/Doto-Medium.ttf");
+            }
         </style>
         <div id="particles-js" ></div>
         <script>
@@ -271,6 +327,28 @@
 
     <body>
         <script src="./assets/bootstrap/js/bootstrap.js"></script>
+        <div class="sidebar">
+          <ul>
+              <li>
+                  <a onclick="placeholder()">
+                      <img src="assets/uicons/faq.svg" alt="Image" class="sidebaricon">
+                      Q&A
+                  </a>
+              </li>
+              <li>
+                  <a onclick="placeholder()">
+                      <img src="assets/uicons/settings.svg" alt="Image" class="sidebaricon">
+                      Settings
+                  </a>
+              </li>
+              <li>
+                  <a onclick="placeholder()">
+                      <img src="assets/uicons/news.svg" alt="Image" class="sidebaricon">
+                      News
+                  </a>
+              </li>
+          </ul>
+      </div>
         <div class="mainbox" id="settings-panel">
             <button class="round_button prevent-select " id="close_settings">
                X
@@ -419,9 +497,9 @@
                     
                 ]
             `;
-            const blob = new Blob([text], {type: "application/json"});
+            const blob = new Blob([text], { type: "application/json" });
             const blobUrl = URL.createObjectURL(blob);
-            
+
             function renderList() {
                 document.getElementById("loader").style.display = "block";
                 const container = document.getElementById("itembox");
@@ -446,17 +524,17 @@
                             </div>
                           </div>
                           `;
-                          container.appendChild(listItem);
-                      });
-                  })
-                  .catch((error) => console.error("Error:", error))
-                  .finally(() => {
-                      document.getElementById("loader").style.display = "none";
-                  });
+                            container.appendChild(listItem);
+                        });
+                    })
+                    .catch((error) => console.error("Error:", error))
+                    .finally(() => {
+                        document.getElementById("loader").style.display = "none";
+                    });
             };
-                
+
             renderList();
-            
+
             // Access the first stylesheet in the document
            // const stylesheet = document.styleSheets[1];
 
@@ -468,6 +546,7 @@
            //   }
            // }
         </script>
-        </center>
-    </body>
+    </center>
+</body>
+
 </html>
