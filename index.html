@@ -251,19 +251,22 @@
             #main-panel.open {
                 transform: translateX(-24vh);
             }
-            h1{
-                font-size: 3vw;
+            h1 {
+                font-family: "Doto";
+                font-size: 5em;
+                color: #d0ced2;
+                text-decoration: none !important;
             }
             .sidebar {
-            width: 200px;
-            height: 100vh;
-            z-index: 1000;
-            padding-top: 20px;
-            padding-left: 20px;
-            top: 0;
-            left: 0;
-            position: fixed;
-            color: #ffffff;
+                width: 200px;
+                height: 100vh;
+                z-index: 1000;
+                padding-top: 20px;
+                padding-left: 20px;
+                top: 0;
+                left: 0;
+                position: fixed;
+                color: #ffffff;
             }
 
             .sidebar ul {
@@ -330,37 +333,36 @@
         <div class="sidebar">
           <ul>
               <li>
-                  <a onclick="placeholder()">
+                  <a onclick="placeholder()" id="faq-button">
                       <img src="assets/uicons/faq.svg" alt="Image" class="sidebaricon">
                       Q&A
                   </a>
               </li>
               <li>
-                  <a onclick="placeholder()">
+                  <a onclick="placeholder()" id="settings-button">
                       <img src="assets/uicons/settings.svg" alt="Image" class="sidebaricon">
                       Settings
                   </a>
               </li>
               <li>
-                  <a onclick="placeholder()">
+                  <a onclick="placeholder()" id="news-button">
                       <img src="assets/uicons/news.svg" alt="Image" class="sidebaricon">
                       News
                   </a>
               </li>
           </ul>
       </div>
+      
         <div class="mainbox" id="settings-panel">
-            <button class="round_button prevent-select " id="close_settings">
+            <button class="round_button" id="close_settings">
                X
             </button>
         </div>
+        
         <center>
             <div class="mainbox" id="main-panel">
                 
-                <h1>test</h1>
-                <button class="round_button prevent-select" id="settings-button">
-                   Settings
-                </button>
+                <h1>gr1d</h1>
                 
                 <!-- Loader box -->
                 <div class="text-center" id="loader">
