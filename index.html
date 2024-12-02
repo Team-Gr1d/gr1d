@@ -13,17 +13,23 @@
         
         <style id="main-style" rel="stylesheet">
             body {
-                background-color: #FFDFA2;
+                font-size: 2vw;
+                background: repeating-linear-gradient(
+                45deg,
+                #ffffff,
+                #464646 5%,
+                #757575 5%,
+                #b6b6b6 10%
+            );
                 font-family: FuturaPT;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                background-size: 100px 100px;
+                animation: move-it 4s linear infinite;
             }
             @font-face {
                 font-family: FuturaPT;
                 src: url(assets/FuturaPT.otf);
             }
+            
             #BG{
                 z-index: -5;
                 position: fixed;
@@ -32,25 +38,51 @@
                 min-width: 100%;
                 min-height: 100%;
             }
+            @keyframes move-it {
+            0% {
+                background-position: initial;
+            }
+            100% {
+                background-position: 100px 0px;
+            }
+            }
+
             .mainbox {
+                transform: translateX(0vh);
+                transition-duration: 0.4s;
+                -webkit-transition-duration: 0.4s;
+                -ms-transition-duration: 0.4s;
+                -moz-transition-duration: 0.4s;
                 z-index: 1;
-                width: 90%;
+                width: 75%;
                 height: 95vh;
-                backdrop-filter: blur(10px) saturate(180%);
-                -webkit-backdrop-filter: blur(10px) saturate(180%);
+                backdrop-filter: blur(5px) saturate(180%);
+                -webkit-backdrop-filter: blur(5px) saturate(180%);
                 background-color: rgba(255, 255, 255, 0.2);
-                outline: 1px solid white;
+                outline: 0.3vh solid white;
                 margin-top: 1%;
                 margin-bottom: 1%;
                 border-radius: 0.4em;
                 box-shadow: 0px 10px 10px;
+                overflow-y: scroll;
+                scrollbar-width: none;
+                scroll-behavior: smooth;
+
+                
+            }
+            .prevent-select {
+                -webkit-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
             }
             .round_button{
+                text-decoration: none !important;
                 width: auto;
+                min-width: 7vh;
                 height: auto;
                 box-shadow: 0em 0.15em;
                 background-color: rgba(255, 255, 255, 0.5);
-                border-radius: 1em;
+                border-radius: 10vw;
                 transition-duration: 0.4s;
                 -webkit-transition-duration: 0.4s;
                 -ms-transition-duration: 0.4s;
@@ -58,8 +90,8 @@
             }
             .round_button:hover {
                 transform: translate(0em, -0.15em);
-                box-shadow: 0em 0.30em;
-                transition-duration: 0.5s;
+                box-shadow: 0em 0.28em;
+                transition-duration: 0.3s;
                 -webkit-transition-duration: 0.3s;
                 -ms-transition-duration: 0.3s;
                 -moz-transition-duration: 0.3s;
@@ -80,6 +112,7 @@
                 margin-bottom: 5%;
             }
             .gamecard {
+                font-size: 3vh;
                 z-index: 1;
                 width: 90%;
                 max-width: 300px;
@@ -89,7 +122,7 @@
                 backdrop-filter: blur(16px) saturate(180%);
                 -webkit-backdrop-filter: blur(16px) saturate(180%);
                 background-color: rgba(0, 0, 0, 0.5);
-                outline: 1px solid white;
+                outline: 2px solid white;
                 margin-top: 1%;
                 margin-bottom: 1%;
                 border-radius: 0.2em;
@@ -188,18 +221,55 @@
                 word-wrap: break-word;
                 word-break: break-word;
             }
+            #settings-panel{
+                overflow:visible;
+                position: absolute;
+                margin-top: 0%;
+                transform: translateX(-40vh);
+                height: 95vh;
+                width: 40vh;
+                transition-duration: 0.4s;
+                -webkit-transition-duration: 0.4s;
+                -ms-transition-duration: 0.4s;
+                -moz-transition-duration: 0.4s;
+            }
 
+            #settings-panel.open {
+                transform: translateX(4vh);
+            }
+            #main-panel{
+                transform: translateX(0vh);
+                transition-duration: 0.4s;
+                -webkit-transition-duration: 0.4s;
+                -ms-transition-duration: 0.4s;
+                -moz-transition-duration: 0.4s; 
+            }
+            #main-panel.open {
+                transform: translateX(24vh);
+            }
+            h1{
+                font-size: 3vw;
+            }
         </style>
     </head>
 
     <body>
         <script src="./assets/bootstrap/js/bootstrap.js"></script>
+        <div class="mainbox" id="settings-panel">
+            <button class="round_button prevent-select " id="close_settings">
+               X
+            </button>
+            <h1>Settings</h1>
+            <p>Settings</p>
+            <p>Settings</p>
+            <p>Settings</p>
+        </div>
         <center>
-            <div class="mainbox">
+            <div class="mainbox" id="main-panel">
                 
                 <h1>test</h1>
-                <button class="round_button">
-                   hello world!
+                <button class="round_button prevent-select" id="settings-button">
+                   Settings
                 </button>
                 
                 <!-- Loader box -->
@@ -214,11 +284,23 @@
                     </div>
                 </div>
             </div>
-        
+        </center>
         <!-- BG video -->
-        <video autoplay muted loop id="BG">
-            <source src="BG.mp4" type="video/mp4">
-        </video>
+        <script>
+            const settingsButton = document.getElementById('settings-button');
+            const settingsPanel = document.getElementById('main-panel');
+            const mainpanel = document.getElementById('settings-panel');
+            const settingscloseButton = document.getElementById('close_settings');
+            settingsButton.addEventListener('click', () => {
+             settingsPanel.classList.toggle('open');
+             mainpanel.classList.toggle('open');
+            });
+
+            settingscloseButton.addEventListener('click', () => {
+                settingsPanel.classList.toggle('open');
+                mainpanel.classList.toggle('open');
+            });
+        </script>
         
         <script>
             const text = `
@@ -270,7 +352,55 @@
                         "img": "assets/icons/2.png",
                         "url": "studyguide/1vl/index.html",
                         "desc": "very cool shooter fortnite clone"
-                    }                    
+                    },        
+                    {
+                        "name": "0hh1",
+                        "img": "assets/icons/1.png",
+                        "url": "studyguide/0hh1/index.html",
+                        "desc": "block game ig"
+                    },
+                        {
+                        "name": "1v1 LoL",
+                        "img": "assets/icons/2.png",
+                        "url": "studyguide/1vl/index.html",
+                        "desc": "very cool shooter fortnite clone"
+                    },
+                    {
+                        "name": "0hh1",
+                        "img": "assets/icons/1.png",
+                        "url": "studyguide/0hh1/index.html",
+                        "desc": "block game ig"
+                    },
+                        {
+                        "name": "1v1 LoL",
+                        "img": "assets/icons/2.png",
+                        "url": "studyguide/1vl/index.html",
+                        "desc": "very cool shooter fortnite clone"
+                    },
+                    {
+                        "name": "0hh1",
+                        "img": "assets/icons/1.png",
+                        "url": "studyguide/0hh1/index.html",
+                        "desc": "block game ig"
+                    },
+                        {
+                        "name": "1v1 LoL",
+                        "img": "assets/icons/2.png",
+                        "url": "studyguide/1vl/index.html",
+                        "desc": "very cool shooter fortnite clone"
+                    },
+                    {
+                        "name": "0hh1",
+                        "img": "assets/icons/1.png",
+                        "url": "studyguide/0hh1/index.html",
+                        "desc": "block game ig"
+                    },
+                        {
+                        "name": "1v1 LoL",
+                        "img": "assets/icons/2.png",
+                        "url": "studyguide/1vl/index.html",
+                        "desc": "very cool shooter fortnite clone"
+                    }              
                     
                 ]
             `;
@@ -313,15 +443,15 @@
             renderList();
             
             // Access the first stylesheet in the document
-            const stylesheet = document.styleSheets[1];
+           // const stylesheet = document.styleSheets[1];
 
             // Modify a CSS rule for the class
-            const rules = stylesheet.cssRules || stylesheet.rules;
-            for (let i = 0; i < rules.length; i++) {
-              if (rules[i].selectorText === '.mainbox') {
-                rules[i].style.height = '95%';
-              }
-            }
+           // const rules = stylesheet.cssRules || stylesheet.rules;
+            //for (let i = 0; i < rules.length; i++) {
+           //   if (rules[i].selectorText === '.mainbox') {
+            //    rules[i].style.height = '95%';
+           //   }
+           // }
         </script>
         </center>
     </body>
