@@ -176,6 +176,21 @@
             padding-bottom: 5px;
             vertical-align: middle;
         }
+        .searchbar {
+            width: 200px;
+            float: right;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 10px;
+            border-color: white;
+            border-style: solid;
+            border-width: 2px;
+        }
+        .searchbar::placeholder {
+            color: white;
+        }
     </style>
 </head>
 
@@ -210,6 +225,10 @@
             <button class="round_button">
                 hello world!
             </button>
+
+        
+            <input type="text" placeholder="Search..." id="searchbar" class="searchbar">
+            
 
             <!-- Loader box -->
             <div class="text-center" id="loader">
