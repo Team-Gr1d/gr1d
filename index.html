@@ -31,7 +31,7 @@
             #particles-js{ position:fixed; width: 100%; height: 100%; background-color: #000000; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ .count-particles{ background: #000022; position: absolute; top: 48px; left: 0; width: 80px; color: #13E8E9; font-size: .8em; text-align: left; text-indent: 4px; line-height: 14px; padding-bottom: 2px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; } .js-count-particles{ font-size: 1.1em; } #stats, .count-particles{ -webkit-user-select: none; margin-top: 5px; margin-left: 5px; } #stats{ border-radius: 3px 3px 0 0; overflow: hidden; } .count-particles{ border-radius: 0 0 3px 3px; }
             @font-face {
                 font-family: FuturaPT;
-                src: url(assets/fonts/FuturaPT.otf);
+                src: url(assets/fonts/Quicksand.ttf);
             }
             
             #BG{
@@ -71,8 +71,6 @@
                 overflow-y: scroll;
                 scrollbar-width: none;
                 scroll-behavior: smooth;
-
-                
             }
             .prevent-select {
                 -webkit-user-select: none;
@@ -110,6 +108,32 @@
                 -ms-transition-duration: 0.1s;
                 -moz-transition-duration: 0.1s;
                 background-color: rgba(197, 197, 197, 0.8);
+            }
+            .icon_button {
+                float: right;
+                width: 1vw;
+                transform: scale(1);
+                height: 1vh;
+                color: #ffffff;
+                padding-bottom: 5px;
+                object-fit: cover;
+                vertical-align: middle;
+                text-decoration: none !important;
+                background-color: transparent;
+                border: none;
+                align-items: center;
+                cursor: pointer;
+                transition-duration: 0.1s;
+                -webkit-transition-duration: 0.1s;
+                -ms-transition-duration: 0.1s;
+                -moz-transition-duration: 0.1s;
+            }
+
+            .icon_button:hover {
+              transform: scale(0.9);    
+            }
+            .icon_button:active {
+                transform: scale(0.7);
             }
             .card_margin{
                 margin-top: 5%;
@@ -232,10 +256,7 @@
                 transform: translateX(220vh);
                 height: 95vh;
                 width: 40vh;
-                transition-duration: 0.4s;
-                -webkit-transition-duration: 0.4s;
-                -ms-transition-duration: 0.4s;
-                -moz-transition-duration: 0.4s;
+                transition-duration: all 0.4s;
             }
 
             #settings-panel.open {
@@ -267,11 +288,18 @@
                 left: 0;
                 position: fixed;
                 color: #ffffff;
+                transition-duration: 0.4s;
+                -webkit-transition-duration: 0.4s;
+                -ms-transition-duration: 0.4s;
+                -moz-transition-duration: 0.4s;
             }
-
+            .sidebar.slide{
+                transform: translateX(-40vh);
+            }
             .sidebar ul {
                 list-style-type: none;
                 padding: 0;
+                transition-duration: all 0.4s;
             }
 
             .sidebar ul li {
@@ -354,7 +382,7 @@
 
     <body>
         <script src="./assets/bootstrap/js/bootstrap.js"></script>
-        <div class="sidebar">
+        <div class="sidebar" id="side-panel">
           <ul>
               <li>
                   <a onclick="placeholder()" id="faq-button">
@@ -378,9 +406,9 @@
       </div>
       
         <div class="mainbox" id="settings-panel">
-            <button class="round_button" id="close_settings">
-               X
-            </button>
+            <div class="icon_button" id="close_settings" style="float: right; margin-right: 0.5em;">
+               x
+            </div>
 
 
 
@@ -427,15 +455,18 @@
             const settingsButton = document.getElementById('settings-button');
             const settingsPanel = document.getElementById('main-panel');
             const mainpanel = document.getElementById('settings-panel');
+            const sidepanel = document.getElementById('side-panel');
             const settingscloseButton = document.getElementById('close_settings');
             settingsButton.addEventListener('click', () => {
              settingsPanel.classList.toggle('open');
              mainpanel.classList.toggle('open');
+             sidepanel.classList.toggle('slide');
             });
 
             settingscloseButton.addEventListener('click', () => {
                 settingsPanel.classList.toggle('open');
                 mainpanel.classList.toggle('open');
+                sidepanel.classList.toggle('slide');
             });
         </script>
         <!-- the background particals-->>
