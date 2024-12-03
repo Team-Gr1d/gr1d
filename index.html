@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="The best revision website ever!">
+        <link rel="shortcut icon" id="favi" href="">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Game Site Demo v0.1</title>
 
@@ -77,9 +78,9 @@
                 user-select: none;
             }
             .dropdown_button{
-                width: auto;
+                width: 16vw;
                 min-width: 7vh;
-                height: auto;
+                height: 5vh;
                 box-shadow: 0em 0.15em;
                 backdrop-filter: blur(5px) saturate(180%);
                 -webkit-backdrop-filter: blur(5px) saturate(180%);
@@ -91,6 +92,11 @@
                 -webkit-transition-duration: 0.4s;
                 -ms-transition-duration: 0.4s;
                 -moz-transition-duration: 0.4s;
+                white-space: nowrap; /* Add this line */
+                overflow: hidden; /* Add this line */
+                text-overflow:clip ;
+                font-size: clamp(1.2vw, 2.5vw, 3vw);
+
             }
             .dropdown_button:hover {
                 outline: 0.3vh solid rgba(255, 255, 255, 0.8);
@@ -115,9 +121,9 @@
             }
             .icon_button {
                 float: right;
-                width: 1vw;
+                width: 5vw;
                 transform: scale(1);
-                height: 1vh;
+                height: 5vh;
                 color: #ffffff;
                 padding-bottom: 5px;
                 object-fit: cover;
@@ -373,31 +379,32 @@
               position: relative !important;
             }
 
-            .dropdown-menu {
+            #tabcloak-menu {
                 position: absolute !important;
                 width:  15vw;
                 min-width: 0vw;
                 height: 0;
                 min-height: 0vw;
-                margin-top: 15vh !important;
+                margin-top: 0vh;
+                font-size: 1.3vw;
                 right: 2.5vw !important;
                 transition: all 0.4s ease-in-out;
                 display: block;
                 opacity: 0;
                 overflow: hidden;
-                z-index: -1;
+                z-index: 3;
+                backdrop-filter: blur(5px) saturate(180%);
+                -webkit-backdrop-filter: blur(5px) saturate(180%);
+                background-color: rgba(255, 255, 255, 0.2);
+                outline: 0.3vh solid white;
             }
 
-            #dropdown-button:hover +  .dropdown-menu {
+            #tabcloak-menu.open {
                 transition: all 0.4s ease-in-out;
                 opacity: 1;
-                height: 17vh;
+                height: 25vh;
             }
-            #dropdown-menu:hover {
-                transition: all 0.4s ease-in-out;
-                opacity: 1;
-                height: 17vh;
-            }
+
         </style>
         <div id="particles-js" ></div>
         <script>
@@ -439,25 +446,30 @@
       </div>
       
         <div class="mainbox" id="settings-panel">
-            <div class="icon_button" id="close_settings" style="float: right; margin-right: 0.5em;">
+            <button class="icon_button" id="close_settings">
                x
-            </div>
+            </button>
+            <center>
+            <h2 style="margin-top: 5vh; margin-bottom:-5vh; margin-right:5vw;float: right; font-size: 2vw; color: #ffffff;">Tab Cloaker</h2>  
             <div class="dropdown-container">
-                <button class="dropdown_button" id="dropdown-button"style="font-size: 1.5vw; float: right; margin-top: 10vh;">
+                <button class="dropdown_button" id="tabcloak-button"style="font-size: 1.5vw; margin-top: 10vh;">
                     Tab Cloaker - Gr1d ▼
                 </button>
-                <div id="dropdown-menu" class="dropdown-menu">
-                    <a href="#">Option 1</a>
-                    <br>
-                    <a href="#">Option 2</a>
-                    <br>
-                    <a href="#">Option 3</a>
+                <div id="tabcloak-menu" class="dropdown-menu">
+                    <li><a class="dropdown-item" onclick="TabCloak('Gr1d','assets/tabcloak/favicon.ico' , 'Gr1d' )">Gr1d </a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item"   onclick="TabCloak('Sceneca - Learn 2x Faster','assets/tabcloak/sceneca.ico' , 'Sceneca' )">Sceneca</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item"   onclick="TabCloak('Sparx Maths', 'assets/tabcloak/Sparx.ico', 'Sparx Maths')">Sparx</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item"   onclick="TabCloak('Tassomai ', 'assets/tabcloak/Tassomai.ico' , 'Tassomai')">Tassomai</a></li>
                 </div>
             </div>
+            </center>
         </div>
         <script>
-            document.getElementById("dropdown-button").addEventListener("click", function() {
-                const dropdownMenu = document.getElementById("dropdown-menu");
+            document.getElementById("tabcloak-button").addEventListener("click", function() {
+                const dropdownMenu = document.getElementById("tabcloak-menu");
                 dropdownMenu.classList.toggle("open");
             });
         </script>
@@ -510,7 +522,8 @@
         
         <script>
             function TabCloak(selectedValue, faviconUrl, name) {
-                document.getElementById("SettingDropdown").innerHTML = "TabCloaker - " + name;
+                console.log(selectedValue, faviconUrl, name);
+                document.getElementById("tabcloak-button").innerHTML = name + " ▼";
                 document.title = selectedValue;
                 document.querySelector("link[rel='shortcut icon']").href = faviconUrl;
                 localStorage.setItem("Title", selectedValue);
