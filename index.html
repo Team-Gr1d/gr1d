@@ -370,38 +370,33 @@
                 src: url("./assets/fonts/Doto-Medium.ttf");
             }
             .dropdown-container {
-                position: relative; /* Ensures dropdown-menu is positioned relative to this container */
-                display: inline-block;
+              position: relative !important;
             }
+
             .dropdown-menu {
-                position: absolute; /* Positioned relative to the dropdown container */
-                top: 100%; /* Dropdown appears directly below the button */
-                left: 0;
-                width: 100%; /* Optional: matches the button width */
-                background-color: white;
-                border: 1px solid #ccc;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                transform: translateY(-20px); /* Initially hidden above the button */
-                opacity: 0; /* Fully transparent initially */
-                transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-                z-index: 1000;
-            }
-
-            .dropdown-menu a {
+                position: absolute !important;
+                width:  15vw;
+                min-width: 0vw;
+                height: 0;
+                min-height: 0vw;
+                margin-top: 15vh !important;
+                right: 2.5vw !important;
+                transition: all 0.4s ease-in-out;
                 display: block;
-                padding: 10px 20px;
-                text-decoration: none;
-                color: black;
-                border-bottom: 1px solid #ddd;
+                opacity: 0;
+                overflow: hidden;
+                z-index: -1;
             }
 
-            .dropdown-menu a:hover {
-                background-color: #f1f1f1;
+            #dropdown-button:hover +  .dropdown-menu {
+                transition: all 0.4s ease-in-out;
+                opacity: 1;
+                height: 17vh;
             }
-
-            .dropdown-menu.open {
-                transform: translateY(0); /* Slides the dropdown into view */
-                opacity: 1; /* Fully visible */
+            #dropdown-menu:hover {
+                transition: all 0.4s ease-in-out;
+                opacity: 1;
+                height: 17vh;
             }
         </style>
         <div id="particles-js" ></div>
@@ -453,7 +448,9 @@
                 </button>
                 <div id="dropdown-menu" class="dropdown-menu">
                     <a href="#">Option 1</a>
+                    <br>
                     <a href="#">Option 2</a>
+                    <br>
                     <a href="#">Option 3</a>
                 </div>
             </div>
