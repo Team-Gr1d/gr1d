@@ -437,6 +437,7 @@ h1 {
 
 .dropdown-container {
     position: relative !important;
+    z-index: -1;
 }
 
 #tabcloak-menu {
