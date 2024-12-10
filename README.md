@@ -8,7 +8,7 @@
 
 ## Team gr1d
 
-- @metalfoxdev
-- @thatoneham
-- @YourSeriousDev
-- @WillGr-dev
+@metalfoxdev
+@thatoneham
+@YourSeriousDev
+@WillGr-dev
