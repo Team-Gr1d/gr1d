@@ -5,3 +5,10 @@
 - 🗂️ Tab Cloaker, loads of common websites to cloak as.
 - ⚡ Powerful UI, but still lightweight.
 - ☕ Active team of developers
+
+## Team gr1d
+
+- @metalfoxdev
+- @thatoneham
+- @YourSeriousDev
+- @WillGr-dev
