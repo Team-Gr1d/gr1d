@@ -199,10 +199,8 @@
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
                 }
+                console.log(response.json())
                 return response.json();
-            })
-            .then(data => {
-                text = data
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
