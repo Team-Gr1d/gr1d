@@ -203,51 +203,54 @@
             })
             .then(data => {
                 // Push the fetched data into the array
-                text.push(data);
+                text = data; // Assign fetched data to the array
                 console.log(text); // Log the array to confirm
+                createBlobAndRenderList(); // Proceed to create Blob and render the list
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
 
-        const blob = new Blob([text], { type: "application/json" });
-        const blobUrl = URL.createObjectURL(blob);
+        function createBlobAndRenderList() {
+            const blob = new Blob([JSON.stringify(text)], { type: "application/json" });
+            const blobUrl = URL.createObjectURL(blob);
 
-        function renderList() {
+            renderList(blobUrl);
+        }
+
+        function renderList(blobUrl) {
             document.getElementById("loader").style.display = "block";
             const container = document.getElementById("itembox");
 
             fetch(blobUrl)
                 .then(response => response.json())
                 .then(data => {
+                    // Sort the data by name
                     data.sort((a, b) => (a.name > b.name) ? 1 : -1);
                     container.innerHTML = '';
                     data.forEach(item => {
-                        const listItem = document.createElement("a")
-                        listItem.classList.add("griditem")
-                        listItem.href = item.url
+                        const listItem = document.createElement("a");
+                        listItem.classList.add("griditem");
+                        listItem.href = item.url;
                         listItem.innerHTML = `
-                          <div class="card_margin">
-                            <div class="col zoom-effect gamecard">
-                                <div class="inner_card">
-                                <img src="${item.img}" class="img-fluid rounded-2" alt="Image">
-                                <p class="text-center listing-text ">${item.name}</p>
-                                <p class="gamecardtext text-center text-break">${item.desc}</p>
-                                </div>
-                            </div>
-                          </div>
-                          `;
+                  <div class="card_margin">
+                    <div class="col zoom-effect gamecard">
+                        <div class="inner_card">
+                        <img src="${item.img}" class="img-fluid rounded-2" alt="Image">
+                        <p class="text-center listing-text ">${item.name}</p>
+                        <p class="gamecardtext text-center text-break">${item.desc || ''}</p>
+                        </div>
+                    </div>
+                  </div>
+                  `;
                         container.appendChild(listItem);
                     });
                 })
-                .catch((error) => console.error("Error:", error))
+                .catch(error => console.error("Error:", error))
                 .finally(() => {
                     document.getElementById("loader").style.display = "none";
                 });
-        };
-
-        renderList();
-
+        }
         // Access the first stylesheet in the document
         // const stylesheet = document.styleSheets[1];
 
