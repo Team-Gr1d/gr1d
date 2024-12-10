@@ -8,7 +8,7 @@
 
 ## Team gr1d
 
-@metalfoxdev
-@thatoneham
-@YourSeriousDev
-@WillGr-dev
+- [metalfoxdev](https://github.com/metalfoxdev)
+- [thatoneham](https://github.com/thatoneham)
+- [YourSeriousDev](https://github.com/YourSeriousDev)
+- [WillGr-dev](https://github.com/WillGr-dev)
