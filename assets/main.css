@@ -179,7 +179,6 @@ body {
     -webkit-transition-duration: 0.1s;
     -ms-transition-duration: 0.1s;
     -moz-transition-duration: 0.1s;
-    z-index: 1;
     position: relative;
 }
 
