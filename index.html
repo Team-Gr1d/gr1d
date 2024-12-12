@@ -150,17 +150,20 @@
             const settingsPanel = document.getElementById('main-panel');
             const mainpanel = document.getElementById('settings-panel');
             const sidepanel = document.getElementById('side-panel');
+            const searchbar = document.getElementById('searchbar');
             const settingscloseButton = document.getElementById('close_settings');
             settingsButton.addEventListener('click', () => {
              settingsPanel.classList.toggle('open');
              mainpanel.classList.toggle('open');
              sidepanel.classList.toggle('slide');
+             searchbar.classList.toggle('close');
             });
 
             settingscloseButton.addEventListener('click', () => {
                 settingsPanel.classList.toggle('open');
                 mainpanel.classList.toggle('open');
                 sidepanel.classList.toggle('slide');
+                searchbar.classList.toggle('open');
             });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
