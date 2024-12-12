@@ -1,259 +1,234 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The best revision website ever!">
+        <link rel="shortcut icon" id="favi" href="">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Game Site Demo v0.1</title>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="The best revision website ever!">
-    <link rel="shortcut icon" id="favi" href="">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Game Site Demo v0.1</title>
+        <!-- Bootstrap 5.3.3 -->
+        <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="./assets/main.css">
+        <div id="particles-js" >
+            <video autoplay muted loop id="bg-video"> <source src="BG.mp4" type="video/mp4"> Your browser does not support HTML5 video. </video>
+        </div>
+        <!-- <script src="./assets/particles.js"></script> -->
+    </head>
 
-    <!-- Bootstrap 5.3.3 -->
-    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./assets/main.css">
-    <div id="particles-js">
-        <video autoplay muted loop id="bg-video">
-            <source src="BG.mp4" type="video/mp4"> Your browser does not support HTML5 video.
-        </video>
-    </div>
-    <!-- <script src="./assets/particles.js"></script> -->
-</head>
-
-<body onload="LoadData()">
-    <script src="./assets/bootstrap/js/bootstrap.js"></script>
-    <div class="sidebar" id="side-panel">
-        <ul>
-            <li>
-                <a onclick="placeholder()" id="faq-button">
-                    <img src="assets/uicons/faq.svg" alt="Image" class="sidebaricon">
-                    Q&A
-                </a>
-            </li>
-            <li>
-                <a onclick="placeholder()" id="settings-button">
-                    <img src="assets/uicons/settings.svg" alt="Image" class="sidebaricon">
-                    Settings
-                </a>
-            </li>
-            <li>
-                <a onclick="placeholder()" id="news-button">
-                    <img src="assets/uicons/news.svg" alt="Image" class="sidebaricon">
-                    News
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="mainbox" id="settings-panel">
-        <button class="icon_button" id="close_settings">
-            x
-        </button>
-        <center>
-            <h2
-                style="margin-top: 5vh; margin-bottom:-5vh; margin-right:5vw;float: right; font-size: 2vw; color: #ffffff;">
-                Tab Cloaker</h2>
+    <body onload="LoadData()">
+        <script src="./assets/bootstrap/js/bootstrap.js"></script>
+        <div class="sidebar" id="side-panel">
+          <ul>
+              <li>
+                  <a onclick="placeholder()" id="faq-button">
+                      <img src="assets/uicons/faq.svg" alt="Image" class="sidebaricon">
+                      Q&A
+                  </a>
+              </li>
+              <li>
+                  <a onclick="placeholder()" id="settings-button">
+                      <img src="assets/uicons/settings.svg" alt="Image" class="sidebaricon">
+                      Settings
+                  </a>
+              </li>
+              <li>
+                  <a onclick="placeholder()" id="news-button">
+                      <img src="assets/uicons/news.svg" alt="Image" class="sidebaricon">
+                      News
+                  </a>
+              </li>
+          </ul>
+      </div>
+      
+        <div class="mainbox" id="settings-panel">
+            <button class="icon_button" id="close_settings">
+               x
+            </button>
+            <center>
+            <h2 style="margin-top: 5vh; margin-bottom:-5vh; margin-right:5vw;float: right; font-size: 2vw; color: #ffffff;">Tab Cloaker</h2>  
             <div class="dropdown-container">
-                <button class="dropdown_button" id="tabcloak-button" style="font-size: 1.5vw; margin-top: 10vh;">
+                <button class="dropdown_button" id="tabcloak-button"style="font-size: 1.5vw; margin-top: 10vh;">
                     Tab Cloaker - Gr1d ▼
                 </button>
                 <div id="tabcloak-menu" class="dropdown-menu">
-                    <li><a class="dropdown-item" onclick="TabCloak('Gr1d','assets/tabcloak/favicon.ico' , 'Gr1d' )">Gr1d
-                        </a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item"
-                            onclick="TabCloak('Sceneca - Learn 2x Faster','assets/tabcloak/sceneca.ico' , 'Sceneca' )">Sceneca</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item"
-                            onclick="TabCloak('Sparx Maths', 'assets/tabcloak/Sparx.ico', 'Sparx Maths')">Sparx</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item"
-                            onclick="TabCloak('Tassomai ', 'assets/tabcloak/Tassomai.ico' , 'Tassomai')">Tassomai</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item"
-                            onclick="TabCloak('Student Portal - Dashboard', 'assets/tabclock/bromcom.ico', 'Bromcom/Student Portal')">Student
-                            Portal</a></li>
+                    <li><a class="dropdown-item" onclick="TabCloak('Gr1d','assets/tabcloak/favicon.ico' , 'Gr1d' )">Gr1d </a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item"   onclick="TabCloak('Seneca - Learn 2x Faster','assets/tabcloak/sceneca.ico' , 'Seneca' )">Seneca</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item"   onclick="TabCloak('Sparx Maths', 'assets/tabcloak/Sparx.ico', 'Sparx Maths')">Sparx</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item"   onclick="TabCloak('Tassomai ', 'assets/tabcloak/Tassomai.ico' , 'Tassomai')">Tassomai</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" onclick="TabCloak('Student Portal - Dashboard', 'assets/tabclock/bromcom.png', 'Bromcom/Student Portal')">Student Portal</a></li>
                 </div>
             </div>
-        </center>
-    </div>
-    <script>
-        document.getElementById("tabcloak-button").addEventListener("click", function () {
-            const dropdownMenu = document.getElementById("tabcloak-menu");
-            dropdownMenu.classList.toggle("open");
-        });
-    </script>
-    <!--   
+            </center>
+        </div>
+        <script>
+            document.getElementById("tabcloak-button").addEventListener("click", function() {
+                const dropdownMenu = document.getElementById("tabcloak-menu");
+                dropdownMenu.classList.toggle("open");
+            });
+        </script>
+        <!--   
          <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" onclick="TabCloak('Gr1d','assets/icons/favicon.ico' , 'Gr1d' )">Gr1d</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item"   onclick="TabCloak('Sceneca - Learn 2x Faster','assets/icons/sceneca.ico' , 'Sceneca' )">Sceneca</a></li>
+            <li><a class="dropdown-item"   onclick="TabCloak('Seneca - Learn 2x Faster','assets/icons/sceneca.ico' , 'Seneca' )">Seneca</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item"   onclick="TabCloak('Sparx Maths', 'assets/icons/Sparx.ico', 'Sparx Maths')">Sparx</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item"   onclick="TabCloak('Tassomai ', 'assets/icons/Tassomai.ico' , 'Tassomai')">Tassomai</a></li>
         </ul>
         -->
-    <center>
-        <div class="mainbox" id="main-panel">
-
-            <h1>gr1d</h1>
-            <input type="text" placeholder="Search..." id="searchbar" class="searchbar">
-            <!-- Loader box -->
-            <div class="text-center" id="loader">
-                <img src="assets/loader.gif" alt="Loader">
-                <p class="loader-text">Loading...</p>
-            </div>
-
-            <!-- glist grid -->
-            <div class="container">
-                <div class="row row-cols-4" id="itembox">
+        <center>
+            <div class="mainbox" id="main-panel">
+                
+                <h1>gr1d</h1>
+                <input type="text" placeholder="Search..." id="searchbar" class="searchbar">
+                <!-- Loader box -->
+                <div class="text-center" id="loader">
+                    <img src="assets/loader.gif" alt="Loader">
+                    <p class="loader-text">Loading...</p>
                 </div>
-            </div>
-        </div>
-    </center>
-    <script>
-        function handleSearch() {
-            const searchTerm = document.getElementById("searchbar").value.toLowerCase();
-            const gridItems = document.querySelectorAll(".griditem");
-
-            gridItems.forEach(item => {
-                const itemName = item.querySelector(".listing-text").textContent.toLowerCase();
-                if (itemName.includes(searchTerm)) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
-            });
-        }
-
-        document.getElementById("searchbar").addEventListener("input", handleSearch);
-    </script>
-
-    <script>
-        function TabCloak(selectedValue, faviconUrl, name) {
-            console.log(selectedValue, faviconUrl, name);
-            document.getElementById("tabcloak-button").innerHTML = name + " ▼";
-            document.title = selectedValue;
-            document.querySelector("link[rel='shortcut icon']").href = faviconUrl;
-            localStorage.setItem("Title", selectedValue);
-            localStorage.setItem("Favi", faviconUrl);
-        }
-        function LoadData() {
-            var TitleData = localStorage.getItem("Title");
-            var FaviData = localStorage.getItem("Favi");
-            if (TitleData === null) {
-                document.title = "Gr1d";
-                document.querySelector("link[rel='shortcut icon']").href = 'assets/img/favicon.ico';
-                document.getElementById("SettingDropdown").innerHTML = "TabCloaker - Gr1d";
-            }
-            else {
-                document.title = TitleData;
-                document.querySelector("link[rel='shortcut icon']").href = FaviData;
-            }
-
-        }
-    </script>
-    <!-- this is the settings panel script -->
-    <script>
-        const settingsButton = document.getElementById('settings-button');
-        const settingsPanel = document.getElementById('main-panel');
-        const mainpanel = document.getElementById('settings-panel');
-        const sidepanel = document.getElementById('side-panel');
-        const settingscloseButton = document.getElementById('close_settings');
-        settingsButton.addEventListener('click', () => {
-            settingsPanel.classList.toggle('open');
-            mainpanel.classList.toggle('open');
-            sidepanel.classList.toggle('slide');
-        });
-
-        settingscloseButton.addEventListener('click', () => {
-            settingsPanel.classList.toggle('open');
-            mainpanel.classList.toggle('open');
-            sidepanel.classList.toggle('slide');
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <!-- the background particals-->>
-    <script>
-        // particlesJS("particles-js", {"particles":{"number":{"value":95,"density":{"enable":true,"value_area":631.3181133058181}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":0,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
-    </script>
-    <script>
-
-        var text = []; // Array to hold the JSON data
-
-        fetch('./assets/index.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json(); // Parse JSON
-            })
-            .then(data => {
-                text = data; // Store the fetched data
-                renderList(text); // Render the full list
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-
-        function renderList(data) {
-            document.getElementById("loader").style.display = "block";
-            const container = document.getElementById("itembox");
-
-            // Sort data alphabetically by name
-            data.sort((a, b) => a.name.localeCompare(b.name));
-
-            // Clear the container
-            container.innerHTML = '';
-
-            // Render each item
-            data.forEach(item => {
-                const listItem = document.createElement("a");
-                listItem.classList.add("griditem");
-                listItem.href = item.url;
-                listItem.innerHTML = `
-            <div class="card_margin">
-                <div class="col zoom-effect gamecard">
-                    <div class="inner_card">
-                        <img src="${item.img}" class="img-fluid rounded-2" alt="${item.name}">
-                        <p class="text-center listing-text">${item.name}</p>
-                        <p class="gamecardtext text-center text-break">${item.desc || ''}</p>
+                
+                <!-- glist grid -->
+                <div class="container">
+                    <div class="row row-cols-4" id="itembox">
                     </div>
                 </div>
             </div>
-        `;
-                container.appendChild(listItem);
+        </center>
+        <script>
+            function handleSearch() {
+            const searchTerm = document.getElementById("searchbar").value.toLowerCase();
+            const gridItems = document.querySelectorAll(".griditem");
+          
+              gridItems.forEach(item => {
+                 const itemName = item.querySelector(".listing-text").textContent.toLowerCase();
+                 if (itemName.includes(searchTerm)) {
+                     item.style.display = "block";
+                  } else {
+                     item.style.display = "none";
+                 }
+              });
+            }
+        
+           document.getElementById("searchbar").addEventListener("input", handleSearch);
+         </script>
+        
+        <script>
+            function TabCloak(selectedValue, faviconUrl, name) {
+                console.log(selectedValue, faviconUrl, name);
+                document.getElementById("tabcloak-button").innerHTML = name + " ▼";
+                document.title = selectedValue;
+                document.querySelector("link[rel='shortcut icon']").href = faviconUrl;
+                localStorage.setItem("Title", selectedValue);
+                localStorage.setItem("Favi", faviconUrl);
+            }
+            function LoadData(){
+                var TitleData = localStorage.getItem("Title");
+                var FaviData = localStorage.getItem("Favi");
+                if (TitleData === null) {
+                document.title = "Gr1d";
+                document.querySelector("link[rel='shortcut icon']").href = 'assets/img/favicon.ico';
+                document.getElementById("SettingDropdown").innerHTML = "TabCloaker - Gr1d";
+                }
+                else {
+                    document.title = TitleData;
+                    document.querySelector("link[rel='shortcut icon']").href = FaviData;
+                }
+                
+            }
+        </script>
+        <!-- this is the settings panel script -->
+        <script>
+            const settingsButton = document.getElementById('settings-button');
+            const settingsPanel = document.getElementById('main-panel');
+            const mainpanel = document.getElementById('settings-panel');
+            const sidepanel = document.getElementById('side-panel');
+            const settingscloseButton = document.getElementById('close_settings');
+            settingsButton.addEventListener('click', () => {
+             settingsPanel.classList.toggle('open');
+             mainpanel.classList.toggle('open');
+             sidepanel.classList.toggle('slide');
             });
 
-            document.getElementById("loader").style.display = "none"; // Hide the loader
-        }
+            settingscloseButton.addEventListener('click', () => {
+                settingsPanel.classList.toggle('open');
+                mainpanel.classList.toggle('open');
+                sidepanel.classList.toggle('slide');
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <!-- the background particals-->>
+        <script>
+            // particlesJS("particles-js", {"particles":{"number":{"value":95,"density":{"enable":true,"value_area":631.3181133058181}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":0,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+        </script>
+        <script>
+            const text = `
+            [
+                {
+                    "name": "0hh1",
+                    "img": "assets/icons/1.png",
+                    "url": "studyguide/0hh1/index.html",
+                    "desc": "Puzzle game"
+                }
+                    
+            ]
+            `;
+            const blob = new Blob([text], { type: "application/json" });
+            const blobUrl = URL.createObjectURL(blob);
 
+            function renderList() {
+                document.getElementById("loader").style.display = "block";
+                const container = document.getElementById("itembox");
 
-        // Access the first stylesheet in the document
-        // const stylesheet = document.styleSheets[1];
+                fetch(blobUrl)
+                  .then(response => response.json())
+                  .then(data => {
+                      data.sort((a, b) => (a.name > b.name) ? 1 : -1);
+                      container.innerHTML = '';
+                      data.forEach(item => {
+                          const listItem = document.createElement("a")
+                          listItem.classList.add("griditem")
+                          listItem.href = item.url
+                          listItem.innerHTML = `
+                          <div class="card_margin">
+                            <div class="col zoom-effect gamecard">
+                                <div class="inner_card">
+                                <img src="${item.img}" class="img-fluid rounded-2" alt="Image">
+                                <p class="text-center listing-text ">${item.name}</p>
+                                <p class="gamecardtext text-center text-break">${item.desc}</p>
+                                </div>
+                            </div>
+                          </div>
+                          `;
+                            container.appendChild(listItem);
+                        });
+                    })
+                    .catch((error) => console.error("Error:", error))
+                    .finally(() => {
+                        document.getElementById("loader").style.display = "none";
+                    });
+            };
 
-        // Modify a CSS rule for the class
-        // const rules = stylesheet.cssRules || stylesheet.rules;
-        //for (let i = 0; i < rules.length; i++) {
-        //   if (rules[i].selectorText === '.mainbox') {
-        //    rules[i].style.height = '95%';
-        //   }
-        // }
-    </script>
+            renderList();
+
+            // Access the first stylesheet in the document
+           // const stylesheet = document.styleSheets[1];
+
+            // Modify a CSS rule for the class
+           // const rules = stylesheet.cssRules || stylesheet.rules;
+            //for (let i = 0; i < rules.length; i++) {
+           //   if (rules[i].selectorText === '.mainbox') {
+            //    rules[i].style.height = '95%';
+           //   }
+           // }
+        </script>
     </center>
 </body>
 
