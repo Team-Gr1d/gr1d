@@ -190,8 +190,13 @@
                 document.getElementById("loader").style.display = "block";
                 const container = document.getElementById("itembox");
 
-                fetch(blobUrl)
-                  .then(response => response.json())
+                fetch(`assets/index.json`)
+                .then(response => {
+                    if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                   .then(data => {
                       data.sort((a, b) => (a.name > b.name) ? 1 : -1);
                       container.innerHTML = '';
